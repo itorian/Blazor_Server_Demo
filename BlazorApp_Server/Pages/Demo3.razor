@@ -1,0 +1,15 @@
+﻿@* Calling a C# method from JavaScript *@
+
+@page "/demo3"
+@inject IJSRuntime jsRuntime
+
+<h3>Demo 3</h3>
+
+<button @onclick="GetCSharpMessage">Call C# Method</button>
+
+@code {
+    private async Task GetCSharpMessage()
+    {
+        await jsRuntime.InvokeAsync<object>("ShowMessageFromCSharp");
+    }
+}

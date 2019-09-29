@@ -1,0 +1,22 @@
+﻿@page "/demo1"
+
+<h3>Demo 1</h3>
+
+<div class="card mb-3 blazor-card" style="background-color:@color;">
+    <div class="card-body">
+        Blazor demo
+    </div>
+</div>
+
+<button class="btn btn-primary" @onclick="GetRandomColor">Change color using C#</button>
+@code {
+    string color = string.Empty;
+    void GetRandomColor()
+    {
+        var random = new Random();
+        color = String.Format("#{0:X6}", random.Next(0x1000000));
+    }
+}
+
+
+<button class="btn btn-primary" onclick="GetRandomColor()">Change color using JS</button>

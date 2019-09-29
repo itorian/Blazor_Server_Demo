@@ -1,0 +1,19 @@
+﻿@* Calling a JavaScript method from C# *@
+
+@page "/demo2"
+@inject IJSRuntime jsRuntime
+
+<h3>Demo 2</h3>
+
+<input type="text" @bind="message" placeholder="Write here" />
+<button @onclick="ShowAlert">Call JS Method</button>
+
+@code {
+    string message = string.Empty;
+
+    private async Task ShowAlert()
+    {
+        await jsRuntime.InvokeAsync<object>("ShowAlertJsMethod", message);
+        // ShowAlert is declared in .js file
+    }
+}

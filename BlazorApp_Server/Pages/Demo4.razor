@@ -1,0 +1,21 @@
+﻿@* Calling browser API i.e. localStorage *@
+@* Using https://github.com/Blazored/LocalStorage *@
+
+@page "/demo4"
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+<h3>Demo 4</h3>
+
+<button @onclick="StoreInLocalStorage">Store in localStorage</button>
+<br />
+<input type="text" @bind-value="message" readonly />
+
+@code {
+    string message = string.Empty;
+
+    private async Task StoreInLocalStorage()
+    {
+        await localStorage.SetItemAsync("Message", "Blazor !!");
+        message = await localStorage.GetItemAsync<string>("Message");
+    }
+}

@@ -1,0 +1,14 @@
+﻿@* Two-way binding *@
+
+@page "/demo5"
+
+<h3>Demo 5</h3>
+
+<input @bind-value="Message" @bind-value:event="oninput" placeholder="Write here" />
+<br />
+<input type="text" @bind-value="Message" readonly />
+<div>@Message</div>
+
+@code {
+    string Message = "";
+}
